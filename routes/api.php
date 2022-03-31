@@ -31,4 +31,7 @@ Route::post("/login", [AuthController::class, 'login']);
 
 //User list Routes
 Route::post("/createList/{id}", [userListController::class, 'create']);
+Route::get("/userlist/{id}", [userListController::class, 'getAll']);
+Route::delete("/removelist/{id}", [userListController::class, 'delete']);
+
 //Recipes routes

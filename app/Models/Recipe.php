@@ -13,4 +13,8 @@ class Recipe extends Model
         'image',
         'recipe_id'
     ];
+
+    public function recipe() {
+        $this->belongto(userList::class);
+    }
 }

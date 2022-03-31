@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('userList', function (Blueprint $table) {
+        Schema::create('user_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('list_name');
-            $table->string('recipe_name');
             $table->timestamps();
         });
     }

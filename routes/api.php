@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\userListController;
+use App\Models\userList;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +30,5 @@ Route::post("/register", [AuthController::class, 'register']);
 Route::post("/login", [AuthController::class, 'login']);
 
 //User list Routes
-
+Route::post("/createList/{id}", [userListController::class, 'create']);
 //Recipes routes

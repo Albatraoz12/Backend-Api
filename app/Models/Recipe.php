@@ -5,16 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class userList extends Model
+class Recipe extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'user_id',
-        'list_name',
-        'recipe_name'
+        'title',
+        'image',
+        'recipe_id'
     ];
-    public function user()
-    {
-        $this->belongto(User::class);
-    }
 }

@@ -14,7 +14,8 @@ class Recipe extends Model
         'recipe_id'
     ];
 
-    public function recipe() {
+    public function recipe()
+    {
         $this->belongto(userList::class);
     }
 }

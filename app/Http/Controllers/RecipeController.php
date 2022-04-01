@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class RecipeController extends Controller
 {
-    public function getRecipe(Request $request, $id)
+    public function addRecipe(Request $request, $id)
     {
 
         $list = UserList::find($id);

@@ -36,4 +36,4 @@ Route::post("/createList/{id}", [userListController::class, 'create']);
 Route::delete("/removelist/{id}", [userListController::class, 'delete']);
 
 //Recipes routes
-Route::post("/addrecipe/{id}", [RecipeController::class, 'getRecipe']);
+Route::post("/addrecipe/{id}", [RecipeController::class, 'addRecipe']);

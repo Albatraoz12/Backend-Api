@@ -14,7 +14,6 @@ class userListController extends Controller
     {
 
         $list = UserList::where('user_id', $id)->get();
-        // dd($list);
         $response = [
             'status' => true,
             'message' => $list

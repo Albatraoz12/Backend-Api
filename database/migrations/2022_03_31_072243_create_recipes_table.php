@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image');
-            $table->integer('recipe'); //id for extern recipe api.
-            // $table->foreignId('user_list_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->integer('recipe');
+            $table->foreignId('user_lists_id')->nullable()->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

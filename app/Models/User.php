@@ -43,6 +43,6 @@ class User extends Authenticatable
     ];
 
     public function userList() {
-        return $this->hasMany(userList::class);
+        return $this->belongsTo(userList::class);
     }
 }

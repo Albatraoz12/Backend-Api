@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class UserList extends Model
 {
@@ -16,5 +17,10 @@ class UserList extends Model
     public function user()
     {
         $this->belongto(User::class);
+    }
+
+    public function recipe()
+    {
+        $this->hasMany(Recipe::class);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use App\Models\User;
 use App\Models\UserList;
 use Illuminate\Http\Request;
@@ -15,14 +16,16 @@ class RecipeController extends Controller
 
 
         $fields = $request->validate([
-            'list_name' => 'required|string'
+            'title' => 'required|string',
+            'image' => 'required|string',
+            'recipe' => 'required|integer'
         ]);
 
-        $recipe = userList::create([
+        $recipe = Recipe::create([
             'title' => $fields['title'],
             'image' => $fields['image'],
             'recipe' => $fields['recipe'],
-            'user_list_id' => $list->id,
+            'user_lists_id' => $list->id,
         ]);
 
         $response = [

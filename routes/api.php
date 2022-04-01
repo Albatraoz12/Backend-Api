@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\userListController;
 use App\Models\userList;
 
@@ -35,3 +36,4 @@ Route::post("/createList/{id}", [userListController::class, 'create']);
 Route::delete("/removelist/{id}", [userListController::class, 'delete']);
 
 //Recipes routes
+Route::post("/addrecipe/{id}", [RecipeController::class, 'getRecipe']);

@@ -12,7 +12,7 @@ class Recipe extends Model
         'title',
         'image',
         'recipe',
-        'user_list_id'
+        'user_lists_id'
     ];
 
     public function recipe()

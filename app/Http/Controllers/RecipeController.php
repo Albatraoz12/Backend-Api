@@ -34,4 +34,27 @@ class RecipeController extends Controller
         ];
         return response($response, 201);
     }
+
+    public function getRecipe($id)
+    {
+        $recipe = Recipe::where('user_lists_id', $id)->get();
+        $response = [
+            'status' => true,
+            'message' => $recipe
+        ];
+
+        return response($response, 201);
+    }
+
+    public function delete($id)
+    {
+        $recipe = Recipe::find($id);
+        $recipe->delete();
+
+        $response = [
+            'status' => true,
+            'message' => 'Recipe is successfully deleted from list!',
+        ];
+        return response($response, 201);
+    }
 }

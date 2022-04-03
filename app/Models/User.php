@@ -47,6 +47,6 @@ class User extends Authenticatable
     }
 
     public function like() {
-        return $this->hasMany(Like::class);
+        return $this->belongsTo(Like::class);
     }
 }

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\userListController;
 use App\Models\userList;
@@ -39,3 +40,6 @@ Route::delete("/removelist/{id}", [userListController::class, 'delete']);
 Route::post("/addrecipe/{id}", [RecipeController::class, 'addRecipe']);
 Route::get("/getrecipe/{id}", [RecipeController::class, 'getRecipe']);
 Route::delete("/deleterecipe/{id}", [RecipeController::class, 'delete']);
+
+//Likes Routes
+Route::get("/getlikes/{id}", [LikeController::class, 'getAllLikes']);

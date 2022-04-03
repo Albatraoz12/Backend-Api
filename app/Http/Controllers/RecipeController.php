@@ -18,13 +18,13 @@ class RecipeController extends Controller
         $fields = $request->validate([
             'title' => 'required|string',
             'image' => 'required|string',
-            'recipe' => 'required|integer'
+            'recipe_id' => 'required|integer'
         ]);
 
         $recipe = Recipe::create([
-            'title' => $fields['title'],
-            'image' => $fields['image'],
-            'recipe' => $fields['recipe'],
+            'title' => $request['title'],
+            'image' => $request['image'],
+            'recipe' => $request['recipe_id'],
             'user_lists_id' => $list->id,
         ]);
 

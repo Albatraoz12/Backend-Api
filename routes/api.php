@@ -45,4 +45,4 @@ Route::delete("/deleterecipe/{id}", [RecipeController::class, 'delete']);
 Route::get("/get-likes/{id}", [LikeController::class, 'getLikes']);
 // Route::post("/addlike/{id}", [LikeController::class, 'likes']);
 Route::post("/add-like/{id}", [LikeController::class, 'likes']);
-Route::delete("/delete-like/{id}", [LikeController::class, 'delete-like']);
+Route::delete("/delete-like/{id}", [LikeController::class, 'deleteLike']);

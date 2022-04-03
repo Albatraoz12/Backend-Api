@@ -44,4 +44,16 @@ class LikeController extends Controller
 
         return response($response, 201);
     }
+
+    public function deleteLike($id)
+    {
+        $liked = Like::find($id);
+        $liked->delete();
+
+        $response = [
+            'status' => true,
+            'message' => 'You dont like this recipe anymore',
+        ];
+        return response($response, 201);
+    }
 }

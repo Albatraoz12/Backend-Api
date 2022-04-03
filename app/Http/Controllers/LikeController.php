@@ -11,7 +11,13 @@ class LikeController extends Controller
 
     public function getLikes($id)
     {
-        //
+        $likes = Like::where('user_id', $id)->get();
+        $response = [
+            'status' => true,
+            'message' => $likes
+        ];
+
+        return response($response, 201);
     }
 
     public function likes(Request $request, $id)
@@ -35,11 +41,6 @@ class LikeController extends Controller
             'status' => true,
             'message' => 'Recipe is successfully liked!',
         ];
-
-        // $error = [
-        //     'status' => false,
-        //     'message' => 'Recipe is allready added'
-        // ];
 
         return response($response, 201);
     }

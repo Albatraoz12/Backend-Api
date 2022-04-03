@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('recipe_id');
+            $table->string('title');
+            $table->string('image');
             $table->timestamps();
         });
     }

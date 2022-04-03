@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 
 class LikeController extends Controller
 {
-    public function getAllLikes(Request $request, $id)
+
+    public function getLikes($id)
+    {
+        //
+    }
+
+    public function likes(Request $request, $id)
     {
         $user = User::find($id);
 

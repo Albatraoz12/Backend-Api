@@ -11,7 +11,7 @@ class Like extends Model
     protected $fillable = [
         'title',
         'image',
-        'recipe',
+        'recipe_id',
         'user_id'
     ];
 

@@ -43,3 +43,4 @@ Route::delete("/deleterecipe/{id}", [RecipeController::class, 'delete']);
 
 //Likes Routes
 Route::get("/getlikes/{id}", [LikeController::class, 'getAllLikes']);
+Route::post("/addlike/{id}", [LikeController::class, 'likes']);

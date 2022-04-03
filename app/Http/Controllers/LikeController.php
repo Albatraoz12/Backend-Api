@@ -47,7 +47,7 @@ class LikeController extends Controller
 
     public function deleteLike($id)
     {
-        $liked = Like::find($id);
+        $liked = Like::where('recipe_id', $id);
         $liked->delete();
 
         $response = [

@@ -14,4 +14,10 @@ class Like extends Model
         'recipe',
         'user_id'
     ];
+
+
+    public function user()
+    {
+        $this->belongto(User::class);
+    }
 }

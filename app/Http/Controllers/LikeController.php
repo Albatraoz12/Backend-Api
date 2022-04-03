@@ -21,7 +21,7 @@ class LikeController extends Controller
         $fields = $request->validate([
             'title' => 'required|string',
             'image' => 'required|string',
-            'recipe_id' => 'required|integer'
+            'recipe_id' => 'required|integer|unique:likes'
         ]);
 
         $recipe = Like::create([
@@ -35,6 +35,11 @@ class LikeController extends Controller
             'status' => true,
             'message' => 'Recipe is successfully liked!',
         ];
+
+        // $error = [
+        //     'status' => false,
+        //     'message' => 'Recipe is allready added'
+        // ];
 
         return response($response, 201);
     }

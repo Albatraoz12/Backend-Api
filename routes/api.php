@@ -36,12 +36,12 @@ Route::get("/userlist/{id}", [userListController::class, 'getAll']);
 Route::post("/createList/{id}", [userListController::class, 'create']);
 Route::delete("/removelist/{id}", [userListController::class, 'delete']);
 
-//Recipes routes
+//Add Recipes to List routes
 Route::post("/addrecipe/{id}", [RecipeController::class, 'addRecipe']);
 Route::get("/getrecipe/{id}", [RecipeController::class, 'getRecipe']);
 Route::delete("/deleterecipe/{id}", [RecipeController::class, 'delete']);
 
-//Likes Routes
+//Like Recipes Routes
 // Route::get("/getlikes/{id}", [LikeController::class, 'getAllLikes']);
 // Route::post("/addlike/{id}", [LikeController::class, 'likes']);
-Route::post("/addlike/{id}", [LikeController::class, 'likes']);
+Route::post("/add-like/{id}", [LikeController::class, 'likes']);

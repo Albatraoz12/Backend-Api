@@ -21,20 +21,21 @@ class LikeController extends Controller
         $fields = $request->validate([
             'title' => 'required|string',
             'image' => 'required|string',
-            'recipe' => 'required|integer'
+            'recipe_id' => 'required|integer'
         ]);
 
         $recipe = Like::create([
+            'user_id' => $user->id,
+            'recipe_id' => $fields['recipe_id'],
             'title' => $fields['title'],
             'image' => $fields['image'],
-            'recipe' => $fields['recipe'],
-            'user_id' => $user->id,
         ]);
 
         $response = [
             'status' => true,
-            'message' => 'Recipe is successfully added to list!',
+            'message' => 'Recipe is successfully liked!',
         ];
+
         return response($response, 201);
     }
 }

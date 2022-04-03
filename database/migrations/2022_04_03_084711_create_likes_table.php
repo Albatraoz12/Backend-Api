@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
             $table->integer('recipe_id');
             $table->string('title');
             $table->string('image');

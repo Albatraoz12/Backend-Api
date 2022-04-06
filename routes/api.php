@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RecipeController;
+use App\Http\Controllers\UlistController;
 use App\Http\Controllers\userListController;
 use App\Models\userList;
 
@@ -28,21 +29,22 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post("/logout", [AuthController::class, 'logout']);
 });
 
+Route::middleware('auth:sanctum')->group(function () {
+    //User list Routes
+    Route::get("/userlist/{id}", [UlistController::class, 'getAllLists']);
+    Route::post("/create-list/{id}", [UlistController::class, 'createList']);
+    Route::delete("/remove-list/{id}", [UlistController::class, 'deleteList']);
+
+    //Add Recipes to List routes
+    Route::post("/addrecipe/{id}", [RecipeController::class, 'addRecipe']);
+    Route::get("/getrecipe/{id}", [RecipeController::class, 'getRecipe']);
+    Route::delete("/deleterecipe/{id}", [RecipeController::class, 'delete']);
+
+    //Like Recipes Routes
+    Route::get("/get-likes/{id}", [LikeController::class, 'getLikes']);
+    Route::post("/add-like/{id}", [LikeController::class, 'likes']);
+    Route::delete("/delete-like/{id}", [LikeController::class, 'deleteLike']);
+});
+
 Route::post("/register", [AuthController::class, 'register']);
 Route::post("/login", [AuthController::class, 'login']);
-
-//User list Routes
-Route::get("/userlist/{id}", [userListController::class, 'getAll']);
-Route::post("/createList/{id}", [userListController::class, 'create']);
-Route::delete("/removelist/{id}", [userListController::class, 'delete']);
-
-//Add Recipes to List routes
-Route::post("/addrecipe/{id}", [RecipeController::class, 'addRecipe']);
-Route::get("/getrecipe/{id}", [RecipeController::class, 'getRecipe']);
-Route::delete("/deleterecipe/{id}", [RecipeController::class, 'delete']);
-
-//Like Recipes Routes
-Route::get("/get-likes/{id}", [LikeController::class, 'getLikes']);
-// Route::post("/addlike/{id}", [LikeController::class, 'likes']);
-Route::post("/add-like/{id}", [LikeController::class, 'likes']);
-Route::delete("/delete-like/{id}", [LikeController::class, 'deleteLike']);

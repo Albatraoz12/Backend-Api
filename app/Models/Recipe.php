@@ -12,11 +12,11 @@ class Recipe extends Model
         'title',
         'image',
         'recipe',
-        'user_lists_id'
+        'ulist_id'
     ];
 
     public function recipe()
     {
-        $this->belongto(userList::class);
+        $this->belongsTo(Ulist::class);
     }
 }

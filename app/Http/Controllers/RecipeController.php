@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Ulist;
 use App\Models\User;
 use App\Models\UserList;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ class RecipeController extends Controller
     public function addRecipe(Request $request, $id)
     {
 
-        $list = UserList::find($id);
+        $list = Ulist::find($id);
 
 
         $fields = $request->validate([
@@ -25,7 +26,7 @@ class RecipeController extends Controller
             'title' => $request['title'],
             'image' => $request['image'],
             'recipe' => $request['recipe_id'],
-            'user_lists_id' => $list->id,
+            'ulist_id' => $list->id,
         ]);
 
         $response = [
@@ -37,7 +38,7 @@ class RecipeController extends Controller
 
     public function getRecipe($id)
     {
-        $recipe = Recipe::where('user_lists_id', $id)->get();
+        $recipe = Recipe::where('ulist_id', $id)->get();
         $response = [
             'status' => true,
             'message' => $recipe

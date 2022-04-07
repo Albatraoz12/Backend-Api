@@ -13,27 +13,31 @@ class RecipeController extends Controller
     public function addRecipe(Request $request, $id)
     {
 
-        $list = Ulist::find($id);
+        $exists = Recipe::where('recipe', $request['recipe_id'])->where('ulist_id', $id);
 
+        if (!$exists->count()) {
 
-        $fields = $request->validate([
-            'title' => 'required|string',
-            'image' => 'required|string',
-            'recipe_id' => 'required|integer'
-        ]);
+            $recipe = Recipe::create([
+                'title' => $request['title'],
+                'image' => $request['image'],
+                'recipe' => $request['recipe_id'],
+                'ulist_id' => $id,
+            ]);
 
-        $recipe = Recipe::create([
-            'title' => $request['title'],
-            'image' => $request['image'],
-            'recipe' => $request['recipe_id'],
-            'ulist_id' => $list->id,
-        ]);
+            $response = [
+                'status' => true,
+                'message' => 'Recipe is successfully added to list!',
+            ];
 
-        $response = [
-            'status' => true,
-            'message' => 'Recipe is successfully added to list!',
-        ];
-        return response($response, 201);
+            return response($response, 201);
+        } else {
+
+            $response = [
+                'status' => false,
+                'message' => 'Recipe is not added to list!',
+            ];
+            return response($response, 404);
+        }
     }
 
     public function getRecipe($id)

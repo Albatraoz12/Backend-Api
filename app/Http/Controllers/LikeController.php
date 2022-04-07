@@ -22,27 +22,32 @@ class LikeController extends Controller
 
     public function likes(Request $request, $id)
     {
-        $user = User::find($id);
 
-        $fields = $request->validate([
-            'title' => 'required|string',
-            'image' => 'required|string',
-            'recipe_id' => 'required|integer|unique:likes'
-        ]);
+        $exists = Like::where('recipe_id', $request['recipe_id'])->where('user_id', $id);
 
-        $recipe = Like::create([
-            'user_id' => $user->id,
-            'recipe_id' => $fields['recipe_id'],
-            'title' => $fields['title'],
-            'image' => $fields['image'],
-        ]);
+        if (!$exists->count()) {
 
-        $response = [
-            'status' => true,
-            'message' => 'Recipe is successfully liked!',
-        ];
+            $recipe = Like::create([
+                'user_id' => $id,
+                'recipe_id' => $request['recipe_id'],
+                'title' => $request['title'],
+                'image' => $request['image'],
+            ]);
 
-        return response($response, 201);
+            $response = [
+                'status' => true,
+                'message' => 'Recipe is successfully added to list!',
+            ];
+
+            return response($response, 201);
+        } else {
+
+            $response = [
+                'status' => false,
+                'message' => 'Recipe is already added to list!',
+            ];
+            return response($response, 404);
+        }
     }
 
     public function deleteLike($id)
